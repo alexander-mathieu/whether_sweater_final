@@ -1,11 +1,11 @@
 class Api::V1::ForecastsController < ApplicationController
   def show
-    google_geocoding_service.retrieve_lat_long(params[:location])
+    latlong = google_maps_service.retrieve_latlong(params[:location])
   end
 
   private
 
-  def google_geocoding_service
-    @google_geocoding_service ||= GoogleGeocodingService.new
+  def google_maps_service
+    @google_maps_service ||= GoogleMapsService.new
   end
 end
