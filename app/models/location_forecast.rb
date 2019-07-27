@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationForecast
   attr_reader :currently, :hourly, :daily
 
