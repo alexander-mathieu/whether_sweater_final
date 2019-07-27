@@ -7,7 +7,7 @@ class GoogleMapsService
 
   private
 
-  def parse_response(url, params)
+  def parse_response(url, params = {})
     response = connection.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
