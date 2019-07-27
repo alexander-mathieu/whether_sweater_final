@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DarkskyService
   def retrieve_forecast(latlong)
     parse_response("#{latlong}")
