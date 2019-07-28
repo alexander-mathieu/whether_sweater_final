@@ -8,4 +8,16 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :password }
     it { should have_secure_password }
   end
+
+  describe 'instance methods' do
+    it '#update_api_key' do
+      user_params = { email: 'user@example.com',
+                      password: 'password',
+                      password_confirmation: 'password' }
+
+      user = User.create!(user_params)
+
+      expect(user.api_key).to_not be(nil)
+    end
+  end
 end
