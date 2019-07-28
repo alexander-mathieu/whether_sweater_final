@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 class FlickrService
-  def initialize(lat, long)
+  def initialize(lat, long, tags = 'downtown,skyline')
     @lat = lat
     @long = long
+    @tags = tags
   end
 
   def image_search
     params = {
       method: 'flickr.photos.search',
       sort: 'interestingness-desc',
+      tags: tags,
       lat: lat,
       lon: long,
       content_type: 1,
