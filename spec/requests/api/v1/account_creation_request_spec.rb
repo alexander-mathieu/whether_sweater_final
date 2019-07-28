@@ -10,7 +10,7 @@ RSpec.describe 'Users API endpoint' do
       password_confirmation: 'password'
     }
 
-    post '/api/v1/users', params: params
+    post api_v1_users_path, params: params
 
     expect(response).to be_successful
 
@@ -24,7 +24,7 @@ RSpec.describe 'Users API endpoint' do
       email: 'user@example.com'
     }
 
-    post '/api/v1/users', params: params
+    post api_v1_users_path, params: params
 
     expect(response.status).to eq(400)
 
