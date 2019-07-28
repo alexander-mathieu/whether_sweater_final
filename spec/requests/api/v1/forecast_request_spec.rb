@@ -8,6 +8,7 @@ RSpec.describe 'Forecast API endpoint' do
 
     forecast = JSON.parse(response.body, symbolize_names: true)[:data]
 
+    expect(forecast).to have_key(:location)
     expect(forecast).to have_key(:currently)
     expect(forecast).to have_key(:hourly)
     expect(forecast).to have_key(:daily)

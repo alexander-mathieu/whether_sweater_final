@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class GoogleMapsService
-  def retrieve_latlong(location)
-    parse_response('geocode/json', address: location)[:results][0][:geometry][:location]
+  def retrieve_location_info(location)
+    parse_response('geocode/json', address: location)[:results][0]
   end
 
   private

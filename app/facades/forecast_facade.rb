@@ -6,7 +6,7 @@ class ForecastFacade
   end
 
   def location_forecast
-    @location_forecast ||= LocationForecast.new(forecast)
+    @location_forecast ||= LocationForecast.new(location_address, forecast)
   end
 
   def background_images
@@ -22,11 +22,11 @@ class ForecastFacade
   end
 
   def flickr_lat
-    latlong[:lat].to_s
+    location_latlong[:lat].to_s
   end
 
   def flickr_long
-    latlong[:lng].to_s
+    location_latlong[:lng].to_s
   end
 
   def forecast
@@ -38,11 +38,19 @@ class ForecastFacade
   end
 
   def darksky_latlong
-    latlong[:lat].to_s + ',' + latlong[:lng].to_s
+    location_latlong[:lat].to_s + ',' + location_latlong[:lng].to_s
   end
 
-  def latlong
-    @latlong ||= google_maps_service.retrieve_latlong(location_params)
+  def location_latlong
+    location_info[:geometry][:location]
+  end
+
+  def location_address
+    location_info[:formatted_address]
+  end
+
+  def location_info
+    @location_info ||= google_maps_service.retrieve_location_info(location_params)
   end
 
   def google_maps_service
