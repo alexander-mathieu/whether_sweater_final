@@ -24,7 +24,7 @@ class FlickrService
 
   private
 
-  attr_reader :lat, :long
+  attr_reader :lat, :long, :tags
 
   def parse_response(url = '', params)
     response = connection.get(url, params)
