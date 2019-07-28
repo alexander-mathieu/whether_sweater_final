@@ -10,7 +10,7 @@ class ForecastFacade
   end
 
   def background_images
-    @background_images ||= flickr_service.image_search
+    @background_images ||= flickr_service.images_search
   end
 
   private
