@@ -2,7 +2,7 @@
 
 class DarkskyService
   def retrieve_forecast(latlong)
-    parse_response("#{latlong}")
+    parse_response(latlong.to_s)
   end
 
   private
