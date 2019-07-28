@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Background API endpoint' do
   it 'delivers backgrounds for a specific location' do\
-    get '/api/v1/backgrounds?location=denver,co'
+    get api_v1_backgrounds_path, params: { location: 'denver,co' }
 
     expect(response).to be_successful
 
