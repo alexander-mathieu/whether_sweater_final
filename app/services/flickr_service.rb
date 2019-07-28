@@ -19,14 +19,14 @@ class FlickrService
       per_page: 10
     }
 
-    parse_response(params)[:photos][:photo]
+    parse_response('', params)[:photos][:photo]
   end
 
   private
 
   attr_reader :lat, :long, :tags
 
-  def parse_response(url = '', params)
+  def parse_response(url, params = {})
     response = connection.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
