@@ -14,7 +14,7 @@ class FlickrService
       lon: long,
       content_type: 1,
       safe_search: 1,
-      per_page: 25
+      per_page: 10
     }
 
     parse_response(params)[:photos][:photo]
