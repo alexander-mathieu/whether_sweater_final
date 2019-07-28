@@ -7,7 +7,7 @@ RSpec.describe LocationForecast do
     forecast_data = File.read('./spec/fixtures/darksky_location_forecast.json')
     forecast = JSON.parse(forecast_data, symbolize_names: true)
 
-    @location_forecast = LocationForecast.new(forecast)
+    @location_forecast = LocationForecast.new('Denver, CO, USA', forecast)
   end
 
   it 'exists' do
@@ -15,6 +15,10 @@ RSpec.describe LocationForecast do
   end
 
   describe 'instance methods' do
+    it '#location_address' do
+      expect(@location_forecast.location_address).to eq('Denver, CO, USA')
+    end
+
     it '#currently' do
       expect(@location_forecast.currently).to be_a(Hash)
     end
