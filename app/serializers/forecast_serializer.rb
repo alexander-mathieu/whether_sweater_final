@@ -2,6 +2,7 @@ class ForecastSerializer
   def self.serialize(location_forecast)
     {
       data: {
+        location: location_forecast.location_address,
         currently: {
           date: Time.at(location_forecast.currently[:time]).to_datetime.strftime('%m-%d'),
           time: Time.at(location_forecast.currently[:time]).to_datetime.strftime('%I:%M%p'),
