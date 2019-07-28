@@ -14,7 +14,7 @@ class GoogleMapsService
 
   def connection
     Faraday.new('https://maps.googleapis.com/maps/api') do |f|
-      f.params['key'] = ENV['GOOGLE_GEOCODE_API_KEY']
+      f.params['key'] = ENV['GOOGLE_MAPS_API_KEY']
       f.adapter Faraday.default_adapter
     end
   end
