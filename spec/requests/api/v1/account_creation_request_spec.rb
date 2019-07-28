@@ -12,7 +12,7 @@ RSpec.describe 'Users API endpoint' do
 
     post api_v1_users_path, params: params
 
-    expect(response).to be_successful
+    expect(response.status).to eq(201)
 
     body = JSON.parse(response.body, symbolize_names: true)
 
