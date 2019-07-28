@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ForecastShowFacade
   def initialize(location_params)
     @location_params = location_params
@@ -8,6 +10,7 @@ class ForecastShowFacade
   end
 
   private
+
   attr_reader :location_params
 
   def forecast
@@ -19,7 +22,7 @@ class ForecastShowFacade
   end
 
   def formatted_latlong
-    "#{latlong[:lat]}," + "#{latlong[:lng]}"
+    latlong[:lat].to_s + ',' + latlong[:lng].to_s
   end
 
   def latlong
