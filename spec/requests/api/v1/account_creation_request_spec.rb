@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User API endpoint' do
+RSpec.describe 'Users API endpoint' do
   it 'creates an account for a user when valid params are sent' do
     params = {
       email: 'user@example.com',
@@ -10,9 +10,9 @@ RSpec.describe 'User API endpoint' do
       password_confirmation: 'password'
     }
 
-    post '/api/v1/users', params: params
+    post api_v1_users_path, params: params
 
-    expect(response).to be_successful
+    expect(response.status).to eq(201)
 
     body = JSON.parse(response.body, symbolize_names: true)
 
@@ -24,7 +24,7 @@ RSpec.describe 'User API endpoint' do
       email: 'user@example.com'
     }
 
-    post '/api/v1/users', params: params
+    post api_v1_users_path, params: params
 
     expect(response.status).to eq(400)
 
