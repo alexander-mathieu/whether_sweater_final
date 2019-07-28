@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BackgroundSerializer
   def self.serialize(background_images)
     {
