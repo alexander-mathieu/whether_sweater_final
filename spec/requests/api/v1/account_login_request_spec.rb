@@ -13,7 +13,7 @@ RSpec.describe 'Sessions API endpoint' do
   it 'creates a session for a user when valid params are sent' do
     params = {
       email: 'user@example.com',
-      password: 'password',
+      password: 'password'
     }
 
     post api_v1_sessions_path, params: params
