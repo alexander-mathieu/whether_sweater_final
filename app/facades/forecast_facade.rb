@@ -14,7 +14,7 @@ class ForecastFacade
   end
 
   def restaurant_forecast
-    @restaurant_forecast ||= RestaurantForecast.new(road_trip_info, restaurants)
+    @restaurant_forecast ||= RestaurantForecast.new(road_trip_info, params[:food], restaurants)
   end
 
   def road_trip_forecast
