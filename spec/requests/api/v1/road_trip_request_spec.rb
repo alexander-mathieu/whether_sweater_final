@@ -10,8 +10,8 @@ RSpec.describe 'Road Trip API endpoint' do
     user = User.create!(user_params)
 
     params = {
-      origin: "denver,co",
-      destination: "pueblo,co",
+      origin: 'denver,co',
+      destination: 'pueblo,co',
       api_key: user.api_key
     }
 
@@ -34,8 +34,8 @@ RSpec.describe 'Road Trip API endpoint' do
 
   it 'does not deliver the forecast for a destination at arrival time when an unauthorized API key is sent' do
     params = {
-      origin: "denver,co",
-      destination: "pueblo,co",
+      origin: 'denver,co',
+      destination: 'pueblo,co',
       api_key: 'jgn983hy48thw9begh98h4539h4'
     }
 
