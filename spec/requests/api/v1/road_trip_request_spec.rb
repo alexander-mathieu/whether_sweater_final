@@ -15,13 +15,21 @@ RSpec.describe 'Road Trip API endpoint' do
       api_key: user.api_key
     }
 
-    post api_v1_roadtrip_path, params: params
+    post api_v1_road_trip_path, params: params
 
     expect(response).to be_successful
 
-    forecast = JSON.parse(response.body, symbolize_names: true)
+    forecast = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(forecast).to have_key(:location)
+    expect(forecast[:origin]).to eq('Denver, CO, USA')
+    expect(forecast[:destination]).to eq('Pueblo, CO, USA')
+    expect(forecast[:weather_on_arrival]).to have_key(:summary)
+    expect(forecast[:weather_on_arrival]).to have_key(:icon)
+    expect(forecast[:weather_on_arrival]).to have_key(:temperature)
+    expect(forecast[:weather_on_arrival]).to have_key(:feels_like)
+    expect(forecast[:weather_on_arrival]).to have_key(:percent_humidity)
+    expect(forecast[:weather_on_arrival]).to have_key(:visibility_miles)
+    expect(forecast[:weather_on_arrival]).to have_key(:uv_index)
   end
 
   it 'does not deliver the forecast for a destination at arrival time when an unauthorized API key is sent' do
@@ -31,7 +39,7 @@ RSpec.describe 'Road Trip API endpoint' do
       api_key: 'jgn983hy48thw9begh98h4539h4'
     }
 
-    post api_v1_roadtrip_path, params: params
+    post api_v1_road_trip_path, params: params
 
     expect(response.status).to eq(401)
 
