@@ -31,7 +31,7 @@ RSpec.describe RoadTripForecast do
       expect(@road_trip_forecast.weather_on_arrival[:icon]).to eq('clear-day')
       expect(@road_trip_forecast.weather_on_arrival[:temperature]).to eq(85.09)
       expect(@road_trip_forecast.weather_on_arrival[:apparentTemperature]).to eq(85.09)
-      expect(@road_trip_forecast.weather_on_arrival[:humidity] * 100 ).to eq(33)
+      expect(@road_trip_forecast.weather_on_arrival[:humidity] * 100).to eq(33)
       expect(@road_trip_forecast.weather_on_arrival[:uvIndex]).to eq(0)
       expect(@road_trip_forecast.weather_on_arrival[:visibility]).to eq(9.138)
     end
