@@ -6,7 +6,11 @@ class GoogleMapsService
   end
 
   def retrieve_road_trip_info(road_trip_params)
-    parse_response('directions/json', origin: road_trip_params[:origin], destination: road_trip_params[:destination])[:routes][0][:legs][0]
+    if road_trip_params[:start]
+      parse_response('directions/json', origin: road_trip_params[:start], destination: road_trip_params[:end])[:routes][0][:legs][0]
+    else
+      parse_response('directions/json', origin: road_trip_params[:origin], destination: road_trip_params[:destination])[:routes][0][:legs][0]
+    end
   end
 
   private
