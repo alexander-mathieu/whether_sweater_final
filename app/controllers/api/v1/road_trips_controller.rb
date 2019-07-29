@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::RoadTripsController < ApplicationController
   def create
     user = User.find_by(api_key: params[:api_key])
