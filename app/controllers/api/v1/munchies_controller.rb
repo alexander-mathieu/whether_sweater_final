@@ -4,7 +4,7 @@ class Api::V1::MunchiesController < ApplicationController
 
     if user
       facade = ForecastFacade.new(munchies_params)
-      render json: RestarauntForecastSerializer.serialize(facade.restaurant_forecast)
+      render json: RestaurantForecastSerializer.serialize(facade.restaurant_forecast)
     else
       render json: { error: 'Unauthorized API key' }, status: 401
     end
