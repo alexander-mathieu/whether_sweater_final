@@ -18,10 +18,9 @@ RSpec.describe 'Munchies API endpoint' do
 
     get api_v1_munchies_path, params: params
 
-    munchies = JSON.parse(response.body, symbolize_names: true)
+    munchies = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(munchies[:start]).to eq('Denver, CO, USA')
-    expect(munchies[:end]).to eq('Pueblo, CO, USA')
+    expect(munchies[:destination]).to eq('Pueblo, CO')
     expect(munchies[:food]).to eq('chinese')
 
     expect(munchies).to have_key(:open_restaurants)
