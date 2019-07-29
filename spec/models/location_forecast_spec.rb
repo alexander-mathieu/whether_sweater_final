@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe LocationForecast do
   before :each do
-    forecast_data = File.read('./spec/fixtures/darksky_location_forecast.json')
+    forecast_data = File.read('./spec/fixtures/darksky_denver_forecast.json')
     forecast = JSON.parse(forecast_data, symbolize_names: true)
 
     @location_forecast = LocationForecast.new('Denver, CO, USA', forecast)
