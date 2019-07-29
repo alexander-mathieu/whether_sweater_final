@@ -5,7 +5,7 @@ class YelpService
       categories: food,
     }
 
-    parse_response('search', params)
+    parse_response('search', params)[:businesses]
   end
 
   private
