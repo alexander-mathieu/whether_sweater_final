@@ -26,7 +26,7 @@ class ForecastFacade
   attr_reader :params
 
   def open_restaurants
-    @open_restaurants ||= yelp_service.retrieve_restaurants(params[:end], params[:food], open_at)
+    @open_restaurants ||= yelp_service.retrieve_open_restaurants(params[:end], params[:food], open_at)
   end
 
   def open_at
