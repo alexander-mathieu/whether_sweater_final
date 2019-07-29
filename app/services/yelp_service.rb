@@ -1,7 +1,7 @@
 class YelpService
-  def retrieve_restaurants(location, food, open_at)
+  def retrieve_restaurants(destination, food, open_at)
     params = {
-      location: location,
+      location: destination,
       categories: food,
       open_at: open_at
     }
