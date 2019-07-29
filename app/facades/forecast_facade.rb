@@ -14,7 +14,7 @@ class ForecastFacade
   end
 
   def restaurant_forecast
-    @restaurant_forecast ||= RestaurantForecast.new(road_trip_info, params[:food], restaurants)
+    @restaurant_forecast ||= RestaurantForecast.new(road_trip_info, params[:food], open_restaurants)
   end
 
   def road_trip_forecast
@@ -25,8 +25,12 @@ class ForecastFacade
 
   attr_reader :params
 
-  def restaurants
-    @restaurants ||= yelp_service.retrieve_restaurants(params[:end], params[:food])
+  def open_restaurants
+    @open_restaurants ||= yelp_service.retrieve_restaurants(params[:end], params[:food], open_at)
+  end
+
+  def open_at
+    Time.now.to_i + road_trip_info[:duration][:value]
   end
 
   def yelp_service

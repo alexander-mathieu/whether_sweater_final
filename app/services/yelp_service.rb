@@ -1,8 +1,9 @@
 class YelpService
-  def retrieve_restaurants(location, food)
+  def retrieve_restaurants(location, food, open_at)
     params = {
       location: location,
       categories: food,
+      open_at: open_at
     }
 
     parse_response('search', params)[:businesses]
