@@ -1,0 +1,2 @@
+class YelpService
+end
