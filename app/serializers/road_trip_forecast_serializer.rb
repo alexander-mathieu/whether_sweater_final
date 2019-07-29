@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoadTripForecastSerializer
   def self.serialize(road_trip_forecast)
     {
