@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class YelpService
   def retrieve_open_restaurants(destination, food, open_at)
     params = {

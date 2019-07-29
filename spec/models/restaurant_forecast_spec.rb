@@ -16,7 +16,7 @@ RSpec.describe RestaurantForecast do
 
   describe 'instance methods' do
     it '#food' do
-    expect(@restaurant_forecast.food).to eq('chinese')
+      expect(@restaurant_forecast.food).to eq('chinese')
     end
 
     it '#open_restaurants' do
