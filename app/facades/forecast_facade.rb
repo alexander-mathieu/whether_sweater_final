@@ -13,6 +13,10 @@ class ForecastFacade
     @location_forecast ||= LocationForecast.new(location_address, forecast)
   end
 
+  def restaurant_forecast
+    @restaurant_forecast ||= RestaurantForecast.new(road_trip_info, restaurants)
+  end
+
   def road_trip_forecast
     @road_trip_forecast ||= RoadTripForecast.new(road_trip_info, forecast)
   end
@@ -20,6 +24,14 @@ class ForecastFacade
   private
 
   attr_reader :params
+
+  def restaurants
+    @restaurants ||= yelp_service.retrieve_restaurants(params[:end], params[:food])
+  end
+
+  def yelp_service
+    @yelp_service ||= YelpService.new
+  end
 
   def flickr_service
     @flickr_service ||= FlickrService.new(flickr_lat, flickr_long)
