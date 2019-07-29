@@ -3,9 +3,16 @@ class Api::V1::MunchiesController < ApplicationController
     user = User.find_by(api_key: params[:api_key])
 
     if user
-      render json: {success: 'Sweet!'}, status: 200
+      facade = ForecastFacade.new(munchies_params)
+      render json: RestarauntForecastSerializer.serialize(facade.restaurant_forecast)
     else
       render json: { error: 'Unauthorized API key' }, status: 401
     end
+  end
+
+  private
+
+  def munchies_params
+    params.permit(:start, :end, :food)
   end
 end
