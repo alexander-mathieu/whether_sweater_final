@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe LocationAlbum do
   before :each do
     image_data = File.read('./spec/fixtures/flickr_images.json')
-    images = JSON.parse(image_data, symbolize_names: true)
+    images = JSON.parse(image_data, symbolize_names: true)[:photos][:photo]
 
     @location_album = LocationAlbum.new(images)
   end
