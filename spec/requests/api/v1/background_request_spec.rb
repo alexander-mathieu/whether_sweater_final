@@ -3,15 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Background API endpoint' do
-  it 'delivers backgrounds for a specific location' do\
-    get api_v1_backgrounds_path, params: { location: 'denver,co' }
+  it 'delivers backgrounds for a specific location' do
 
-    expect(response).to be_successful
+    VCR.use_cassette('background_api_endpoint') do
+      get api_v1_backgrounds_path, params: { location: 'denver,co' }
 
-    background_images = JSON.parse(response.body, symbolize_names: true)[:data][:background_images]
+      expect(response).to be_successful
 
-    expect(background_images).to be_an(Array)
-    expect(background_images[0]).to have_key(:alt)
-    expect(background_images[0]).to have_key(:url)
+      background_images = JSON.parse(response.body, symbolize_names: true)[:data][:background_images]
+
+      expect(background_images).to be_an(Array)
+      expect(background_images[0]).to have_key(:alt)
+      expect(background_images[0]).to have_key(:url)
+    end
   end
 end
