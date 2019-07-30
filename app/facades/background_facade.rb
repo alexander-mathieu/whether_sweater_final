@@ -16,7 +16,9 @@ class BackgroundFacade
   attr_reader :location_params
 
   def images
-    flickr_service.retrieve_images
+    Rails.cache.fetch("background-images-#{location_params[:location]}", expires_in: 24.hours) do
+      flickr_service.retrieve_images
+    end
   end
 
   def flickr_service
