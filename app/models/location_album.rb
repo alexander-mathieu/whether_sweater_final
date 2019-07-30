@@ -2,7 +2,7 @@
 
 class LocationAlbum
   def initialize(images)
-    @images = images[:photos][:photo]
+    @images = images
   end
 
   def background_images
