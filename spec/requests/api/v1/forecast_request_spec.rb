@@ -11,14 +11,22 @@ RSpec.describe 'Forecast API endpoint' do
       expect(response).to be_successful
 
       forecast = JSON.parse(response.body, symbolize_names: true)[:data]
-
-      expect(forecast).to have_key(:location)
-      expect(forecast).to have_key(:currently)
-      expect(forecast).to have_key(:hourly)
-      expect(forecast).to have_key(:daily)
-
-      expect(forecast[:hourly].count).to eq(8)
-      expect(forecast[:daily].count).to eq(5)
+      
+      expect(forecast[:attributes]).to have_key(:address)
+      expect(forecast[:attributes]).to have_key(:date)
+      expect(forecast[:attributes]).to have_key(:time)
+      expect(forecast[:attributes]).to have_key(:summary)
+      expect(forecast[:attributes]).to have_key(:icon)
+      expect(forecast[:attributes]).to have_key(:temp)
+      expect(forecast[:attributes]).to have_key(:feels_like)
+      expect(forecast[:attributes]).to have_key(:forecast_high)
+      expect(forecast[:attributes]).to have_key(:forecast_low)
+      expect(forecast[:attributes]).to have_key(:uv_index)
+      expect(forecast[:attributes]).to have_key(:visibility_miles)
+      expect(forecast[:attributes]).to have_key(:hourly_forecast)
+      expect(forecast[:attributes]).to have_key(:visibility_miles)
+      expect(forecast[:attributes][:hourly_forecast].count).to eq(8)
+      expect(forecast[:attributes][:daily_forecast].count).to eq(5)
     end
   end
 end
