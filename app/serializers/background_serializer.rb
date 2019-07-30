@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class BackgroundSerializer
-  def self.serialize(location_album)
-    {
-      data: {
-        background_images: location_album.background_images
-      }
-    }
-  end
+  include FastJsonapi::ObjectSerializer
+  set_type :background_image
+
+  attributes :alt, :url
 end

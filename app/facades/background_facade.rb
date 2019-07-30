@@ -5,8 +5,10 @@ class BackgroundFacade
     @location_params = location_params
   end
 
-  def location_album
-    LocationAlbum.new(images)
+  def location_images
+    images.map do |image|
+      LocationImage.new(image)
+    end
   end
 
   private
