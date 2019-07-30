@@ -15,21 +15,23 @@ RSpec.describe 'Road Trip API endpoint' do
       api_key: user.api_key
     }
 
-    post api_v1_road_trip_path, params: params
+    VCR.use_cassette('road_trip_api_endpoint_success') do
+      post api_v1_road_trip_path, params: params
 
-    expect(response).to be_successful
+      expect(response).to be_successful
 
-    forecast = JSON.parse(response.body, symbolize_names: true)[:data]
+      forecast = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(forecast[:origin]).to eq('Denver, CO, USA')
-    expect(forecast[:destination]).to eq('Pueblo, CO, USA')
-    expect(forecast[:weather_on_arrival]).to have_key(:summary)
-    expect(forecast[:weather_on_arrival]).to have_key(:icon)
-    expect(forecast[:weather_on_arrival]).to have_key(:temperature)
-    expect(forecast[:weather_on_arrival]).to have_key(:feels_like)
-    expect(forecast[:weather_on_arrival]).to have_key(:percent_humidity)
-    expect(forecast[:weather_on_arrival]).to have_key(:visibility_miles)
-    expect(forecast[:weather_on_arrival]).to have_key(:uv_index)
+      expect(forecast[:origin]).to eq('Denver, CO, USA')
+      expect(forecast[:destination]).to eq('Pueblo, CO, USA')
+      expect(forecast[:weather_on_arrival]).to have_key(:summary)
+      expect(forecast[:weather_on_arrival]).to have_key(:icon)
+      expect(forecast[:weather_on_arrival]).to have_key(:temperature)
+      expect(forecast[:weather_on_arrival]).to have_key(:feels_like)
+      expect(forecast[:weather_on_arrival]).to have_key(:percent_humidity)
+      expect(forecast[:weather_on_arrival]).to have_key(:visibility_miles)
+      expect(forecast[:weather_on_arrival]).to have_key(:uv_index)
+    end
   end
 
   it 'does not deliver the forecast for a destination at arrival time when an unauthorized API key is sent' do
@@ -39,12 +41,14 @@ RSpec.describe 'Road Trip API endpoint' do
       api_key: 'jgn983hy48thw9begh98h4539h4'
     }
 
-    post api_v1_road_trip_path, params: params
+    VCR.use_cassette('road_trip_api_endpoint_failure') do
+      post api_v1_road_trip_path, params: params
 
-    expect(response.status).to eq(401)
+      expect(response.status).to eq(401)
 
-    body = JSON.parse(response.body, symbolize_names: true)
+      body = JSON.parse(response.body, symbolize_names: true)
 
-    expect(body[:error]).to eq('Unauthorized API key')
+      expect(body[:error]).to eq('Unauthorized API key')
+    end
   end
 end
