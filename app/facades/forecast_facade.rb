@@ -6,7 +6,9 @@ class ForecastFacade
   end
 
   def location_forecast
-    LocationForecast.new(location_address, forecast)
+    Rails.cache.fetch("#{location_params}-forecast", expires_in: 5.minutes) do
+      LocationForecast.new(location_address, forecast)
+    end
   end
 
   private
