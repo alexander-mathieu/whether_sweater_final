@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 class GoogleMapsService
-  def retrieve_location(location_params)
-    parse_response('geocode/json', address: location_params[:location])[:results][0]
+  def initialize(params)
+    @params = params
   end
 
-  def retrieve_road_trip(road_trip_params)
-    parse_response('directions/json', origin: road_trip_params[:origin], destination: road_trip_params[:destination])[:routes][0][:legs][0]
+  def retrieve_location
+    parse_response('geocode/json', address: params[:location])[:results][0]
+  end
+
+  def retrieve_road_trip
+    parse_response('directions/json', origin: params[:origin], destination: params[:destination])[:routes][0][:legs][0]
   end
 
   private
+
+  attr_reader :params
 
   def parse_response(url, params = {})
     response = connection.get(url, params)

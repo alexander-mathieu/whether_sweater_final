@@ -14,11 +14,11 @@ class RoadTripFacade
   attr_reader :road_trip_params
 
   def forecast
-    darksky_service.retrieve_forecast(darksky_latlong)
+    darksky_service.retrieve_forecast
   end
 
   def darksky_service
-    DarkskyService.new
+    DarkskyService.new(darksky_latlong)
   end
 
   def darksky_latlong

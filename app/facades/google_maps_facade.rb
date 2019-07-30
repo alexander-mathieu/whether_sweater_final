@@ -15,7 +15,7 @@ class GoogleMapsFacade
   end
 
   def road_trip
-    google_maps_service.retrieve_road_trip(params)
+    google_maps_service.retrieve_road_trip
   end
 
   private
@@ -23,10 +23,10 @@ class GoogleMapsFacade
   attr_reader :params
 
   def location
-    @location ||= google_maps_service.retrieve_location(params)
+    @location ||= google_maps_service.retrieve_location
   end
 
   def google_maps_service
-    @google_maps_service ||= GoogleMapsService.new
+    @google_maps_service ||= GoogleMapsService.new(params)
   end
 end
