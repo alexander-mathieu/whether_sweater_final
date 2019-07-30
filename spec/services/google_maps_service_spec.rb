@@ -9,12 +9,14 @@ RSpec.describe GoogleMapsService do
 
       google_maps_service = GoogleMapsService.new(location_params)
 
-      response = google_maps_service.retrieve_location
+      VCR.use_cassette('google_maps_service_location_response') do
+        response = google_maps_service.retrieve_location
 
-      expect(response).to be_a(Hash)
-      expect(response[:formatted_address]).to eq('Denver, CO, USA')
-      expect(response[:geometry][:location][:lat]).to eq(39.7392358)
-      expect(response[:geometry][:location][:lng]).to eq(-104.990251)
+        expect(response).to be_a(Hash)
+        expect(response[:formatted_address]).to eq('Denver, CO, USA')
+        expect(response[:geometry][:location][:lat]).to eq(39.7392358)
+        expect(response[:geometry][:location][:lng]).to eq(-104.990251)
+      end
     end
 
     it '#retrieve_road_trip' do
@@ -23,13 +25,15 @@ RSpec.describe GoogleMapsService do
 
       google_maps_service = GoogleMapsService.new(road_trip_params)
 
-      response = google_maps_service.retrieve_road_trip
+      VCR.use_cassette('google_maps_service_road_trip_response') do
+        response = google_maps_service.retrieve_road_trip
 
-      expect(response).to be_a(Hash)
-      expect(response).to have_key(:duration)
-      expect(response[:duration]).to have_key(:value)
-      expect(response[:start_address]).to eq('Denver, CO, USA')
-      expect(response[:end_address]).to eq('Pueblo, CO, USA')
+        expect(response).to be_a(Hash)
+        expect(response).to have_key(:duration)
+        expect(response[:duration]).to have_key(:value)
+        expect(response[:start_address]).to eq('Denver, CO, USA')
+        expect(response[:end_address]).to eq('Pueblo, CO, USA')
+      end
     end
   end
 end
