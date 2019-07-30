@@ -7,7 +7,7 @@ class FlickrService
     @tags = tags
   end
 
-  def images_search
+  def retrieve_images
     params = {
       method: 'flickr.photos.search',
       sort: 'interestingness-desc',
