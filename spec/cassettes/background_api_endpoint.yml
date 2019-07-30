@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 30 Jul 2019 17:42:41 GMT
+      - Tue, 30 Jul 2019 18:57:50 GMT
       Expires:
-      - Tue, 30 Jul 2019 17:44:41 GMT
+      - Tue, 30 Jul 2019 18:59:50 GMT
       Cache-Control:
       - public, max-age=120
       Vary:
@@ -39,7 +39,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=47
+      - gfet4t7; dur=55
       Alt-Svc:
       - quic=":443"; ma=2592000; v="46,43,39"
     body:
@@ -105,7 +105,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Tue, 30 Jul 2019 17:42:41 GMT
+  recorded_at: Tue, 30 Jul 2019 18:57:49 GMT
 - request:
     method: get
     uri: https://www.flickr.com/services/rest?api_key=<FLICKR_API_KEY>&content_type=1&format=json&lat=39.7392358&lon=-104.990251&method=flickr.photos.search&nojsoncallback=1&per_page=10&safe_search=1&sort=interestingness-desc&tags=downtown,skyline
@@ -133,7 +133,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 30 Jul 2019 17:42:41 GMT
+      - Tue, 30 Jul 2019 18:57:51 GMT
       Server:
       - Apache/2.4.39 (Ubuntu)
       X-Content-Type-Options:
@@ -143,21 +143,21 @@ http_interactions:
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 34f097a2c19d8752d51d599eaf6a7366.cloudfront.net (CloudFront)
+      - 1.1 5426e173edd65a7a7e49d28e75692b50.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - ORD51
+      - DEN50-C1
       X-Amz-Cf-Id:
-      - hoa3-aSP_SC0rsJAvbsjpOmuLeZMCvfmVszfGEDOiPI7YnQ-WMmvyA==
+      - O4mgJNY_n6Pq0iArbixgpXZHsBciPVAN9HsnaR5m5hgdzaYrtCt2bA==
     body:
       encoding: ASCII-8BIT
       string: '{"photos":{"page":1,"pages":537,"perpage":10,"total":"5364","photo":[{"id":"47949098166","owner":"74216903@N00","secret":"30b8d34160","server":"65535","farm":66,"title":"Denver","ispublic":1,"isfriend":0,"isfamily":0},{"id":"32691897517","owner":"11143435@N06","secret":"142cb38fcf","server":"65535","farm":66,"title":"Skyline","ispublic":1,"isfriend":0,"isfamily":0},{"id":"40433538333","owner":"20286982@N07","secret":"bb203ba130","server":"7910","farm":8,"title":"City
         Park Pavilion","ispublic":1,"isfriend":0,"isfamily":0},{"id":"46649685564","owner":"20816374@N04","secret":"e5a0d3b81e","server":"7856","farm":8,"title":"IMGP8782-Pano-Edit","ispublic":1,"isfriend":0,"isfamily":0},{"id":"39910698973","owner":"32411159@N05","secret":"532368e033","server":"4912","farm":5,"title":"Coors
         Field with Downtown Denver in background","ispublic":1,"isfriend":0,"isfamily":0},{"id":"46401295491","owner":"22216536@N07","secret":"98d36966cc","server":"4891","farm":5,"title":"Illusions
         of Grandeur","ispublic":1,"isfriend":0,"isfamily":0},{"id":"46066276302","owner":"22216536@N07","secret":"82c8afee42","server":"4901","farm":5,"title":"Faint
-        Whispers of Hush","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44127974920","owner":"90598485@N03","secret":"32627f2a54","server":"4895","farm":5,"title":"Downtown
-        Denver, CO","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30400931657","owner":"20286982@N07","secret":"c4241bb8f5","server":"1959","farm":2,"title":"The
+        Whispers of Hush","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30400931657","owner":"20286982@N07","secret":"c4241bb8f5","server":"1959","farm":2,"title":"The
         Pavilion at City Park","ispublic":1,"isfriend":0,"isfamily":0},{"id":"45039425291","owner":"62007874@N00","secret":"b99408e979","server":"1977","farm":2,"title":"Arapahoe
-        Street from 14th Street, Denver","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"}'
+        Street from 14th Street, Denver","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44127974920","owner":"90598485@N03","secret":"32627f2a54","server":"4895","farm":5,"title":"Downtown
+        Denver, CO","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"}'
     http_version: 
-  recorded_at: Tue, 30 Jul 2019 17:42:41 GMT
+  recorded_at: Tue, 30 Jul 2019 18:57:50 GMT
 recorded_with: VCR 5.0.0

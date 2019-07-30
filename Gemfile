@@ -7,6 +7,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'faraday'
+gem 'fast_jsonapi'
 gem 'figaro'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'

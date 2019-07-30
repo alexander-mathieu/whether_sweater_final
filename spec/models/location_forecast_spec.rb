@@ -15,52 +15,52 @@ RSpec.describe LocationForecast do
   end
 
   describe 'instance methods' do
-    it '#location_address' do
-      expect(@location_forecast.location_address).to eq('Denver, CO, USA')
+    it '#address' do
+      expect(@location_forecast.address).to eq('Denver, CO, USA')
     end
 
-    it '#current_apparent_temp' do
-      expect(@location_forecast.current_apparent_temp).to eq(81.94)
+    it '#date' do
+      expect(@location_forecast.date).to eq('07-26')
     end
 
-    it '#current_date' do
-      expect(@location_forecast.current_date).to eq('07-26')
+    it '#time' do
+      expect(@location_forecast.time).to eq('08:19PM')
     end
 
-    it '#current_icon' do
-      expect(@location_forecast.current_icon).to eq('partly-cloudy-night')
+    it '#summary' do
+      expect(@location_forecast.summary).to eq('Mostly Cloudy')
     end
 
-    it '#current_summary' do
-      expect(@location_forecast.current_summary).to eq('Mostly Cloudy')
+    it '#icon' do
+      expect(@location_forecast.icon).to eq('partly-cloudy-night')
     end
 
-    it '#current_temp' do
-      expect(@location_forecast.current_temp).to eq(81.94)
+    it '#temp' do
+      expect(@location_forecast.temp).to eq(82)
     end
 
-    it '#current_percent_humidity' do
-      expect(@location_forecast.current_percent_humidity).to eq(32)
+    it '#feels_like' do
+      expect(@location_forecast.feels_like).to eq(82)
     end
 
-    it '#current_time' do
-      expect(@location_forecast.current_time).to eq('08:19PM')
+    it '#forecast_high' do
+      expect(@location_forecast.forecast_high).to eq(86)
     end
 
-    it '#current_uv_index' do
-      expect(@location_forecast.current_uv_index).to eq(0)
+    it '#forecast_low' do
+      expect(@location_forecast.forecast_low).to eq(68)
     end
 
-    it '#current_visibility' do
-      expect(@location_forecast.current_visibility).to eq(2.436)
+    it '#percent_humidity' do
+      expect(@location_forecast.percent_humidity).to eq(32)
     end
 
-    it '#daily_high' do
-      expect(@location_forecast.daily_high).to eq(86.19)
+    it '#uv_index' do
+      expect(@location_forecast.uv_index).to eq(0)
     end
 
-    it '#daily_low' do
-      expect(@location_forecast.daily_low).to eq(67.83)
+    it '#visibility' do
+      expect(@location_forecast.visibility_miles).to eq(2.44)
     end
 
     it '#hourly_forecast' do
