@@ -7,11 +7,11 @@ class RoadTripForecastSerializer
   attributes :origin,
              :destination,
              :trip_duration,
+             :summary,
              :icon,
+             :temp,
              :feels_like,
              :percent_humidity,
-             :summary,
-             :temperature,
              :uv_index,
              :visibility_miles
 end
