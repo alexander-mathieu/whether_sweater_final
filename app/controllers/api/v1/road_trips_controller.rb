@@ -6,7 +6,7 @@ class Api::V1::RoadTripsController < ApplicationController
 
     if user
       facade = RoadTripFacade.new(road_trip_params)
-      render json: RoadTripForecastSerializer.serialize(facade.road_trip_forecast)
+      render json: RoadTripForecastSerializer.new(facade.road_trip_forecast)
     else
       render json: { error: 'Unauthorized API key' }, status: 401
     end
