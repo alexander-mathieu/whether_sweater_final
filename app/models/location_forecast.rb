@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LocationForecast
-  attr_reader :location_address, :currently, :hourly, :daily
+  attr_reader :location_address
 
   def initialize(location_address, forecast)
     @location_address = location_address
@@ -15,7 +15,7 @@ class LocationForecast
   end
 
   def current_date
-    Time.at(currently[:time]).to_datetime.strftime('%I:%M%p')
+    Time.at(currently[:time]).to_datetime.strftime('%m-%d')
   end
 
   def current_icon
@@ -35,7 +35,7 @@ class LocationForecast
   end
 
   def current_time
-    Time.at(currently[:time]).to_datetime.strftime('%m-%d')
+    Time.at(currently[:time]).to_datetime.strftime('%I:%M%p')
   end
 
   def current_uv_index
@@ -75,4 +75,8 @@ class LocationForecast
       }
     end
   end
+
+  private
+
+  attr_reader :currently, :hourly, :daily
 end
