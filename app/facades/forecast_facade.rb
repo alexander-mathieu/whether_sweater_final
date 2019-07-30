@@ -5,8 +5,8 @@ class ForecastFacade
     @params = params
   end
 
-  def background_images
-    @background_images ||= flickr_service.images_search
+  def location_album
+    @location_album ||= LocationAlbum.new(images)
   end
 
   def location_forecast
@@ -14,12 +14,16 @@ class ForecastFacade
   end
 
   def road_trip_forecast
-    @road_trip_forecast ||= RoadTripForecast.new(road_trip_info, forecast)
+    @road_trip_forecast ||= RoadTripForecast.new(road_trip, forecast)
   end
 
   private
 
   attr_reader :params
+
+  def images
+    @images ||= flickr_service.retrieve_images
+  end
 
   def flickr_service
     @flickr_service ||= FlickrService.new(flickr_lat, flickr_long)
@@ -47,19 +51,19 @@ class ForecastFacade
 
   def location_latlong
     params[:location] = params[:destination] if params[:destination]
-    location_info[:geometry][:location]
+    location[:geometry][:location]
   end
 
   def location_address
-    location_info[:formatted_address]
+    location[:formatted_address]
   end
 
-  def location_info
-    @location_info ||= google_maps_service.retrieve_location_info(params)
+  def location
+    @location ||= google_maps_service.retrieve_location(params)
   end
 
-  def road_trip_info
-    @road_trip_info ||= google_maps_service.retrieve_road_trip_info(params)
+  def road_trip
+    @road_trip ||= google_maps_service.retrieve_road_trip(params)
   end
 
   def google_maps_service

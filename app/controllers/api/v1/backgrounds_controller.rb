@@ -3,7 +3,7 @@
 class Api::V1::BackgroundsController < ApplicationController
   def show
     facade = ForecastFacade.new(location_params)
-    render json: BackgroundSerializer.serialize(facade.background_images)
+    render json: BackgroundSerializer.serialize(facade.location_album)
   end
 
   private
