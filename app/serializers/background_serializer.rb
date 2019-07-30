@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
 class BackgroundSerializer
-  def self.serialize(background_images)
+  def self.serialize(location_album)
     {
       data: {
-        background_images:
-          background_images.map do |image|
-            {
-              alt: image[:title],
-              url: "https://www.flickr.com/photos/#{image[:owner]}/#{image[:id]}"
-            }
-          end
+        background_images: location_album.background_images
       }
     }
   end
