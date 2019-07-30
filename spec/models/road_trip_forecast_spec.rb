@@ -26,14 +26,32 @@ RSpec.describe RoadTripForecast do
       expect(@road_trip_forecast.destination).to eq('Pueblo, CO, USA')
     end
 
-    it '#weather_on_arrival' do
-      expect(@road_trip_forecast.weather_on_arrival[:summary]).to eq('Clear')
-      expect(@road_trip_forecast.weather_on_arrival[:icon]).to eq('clear-day')
-      expect(@road_trip_forecast.weather_on_arrival[:temperature]).to eq(85.09)
-      expect(@road_trip_forecast.weather_on_arrival[:apparentTemperature]).to eq(85.09)
-      expect(@road_trip_forecast.weather_on_arrival[:humidity] * 100).to eq(33)
-      expect(@road_trip_forecast.weather_on_arrival[:uvIndex]).to eq(0)
-      expect(@road_trip_forecast.weather_on_arrival[:visibility]).to eq(9.138)
+    it '#icon' do
+      expect(@road_trip_forecast.icon).to eq('clear-day')
+    end
+
+    it '#feels_like' do
+      expect(@road_trip_forecast.feels_like).to eq(85.09)
+    end
+
+    it '#percent_humidity' do
+      expect(@road_trip_forecast.percent_humidity).to eq(33)
+    end
+
+    it '#summary' do
+      expect(@road_trip_forecast.summary).to eq('Clear')
+    end
+
+    it '#temperature' do
+      expect(@road_trip_forecast.temperature).to eq(85.09)
+    end
+
+    it '#uv_index' do
+      expect(@road_trip_forecast.uv_index).to eq(0)
+    end
+
+    it '#visibility_miles' do
+      expect(@road_trip_forecast.visibility_miles).to eq(9.138)
     end
   end
 end
