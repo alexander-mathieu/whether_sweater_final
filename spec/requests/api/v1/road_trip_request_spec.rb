@@ -24,13 +24,14 @@ RSpec.describe 'Road Trip API endpoint' do
 
       expect(forecast[:attributes][:origin]).to eq('Denver, CO, USA')
       expect(forecast[:attributes][:destination]).to eq('Pueblo, CO, USA')
+      expect(forecast[:attributes][:trip_duration])
       expect(forecast[:attributes]).to have_key(:summary)
       expect(forecast[:attributes]).to have_key(:icon)
-      expect(forecast[:attributes]).to have_key(:temperature)
+      expect(forecast[:attributes]).to have_key(:temp)
       expect(forecast[:attributes]).to have_key(:feels_like)
       expect(forecast[:attributes]).to have_key(:percent_humidity)
-      expect(forecast[:attributes]).to have_key(:visibility_miles)
       expect(forecast[:attributes]).to have_key(:uv_index)
+      expect(forecast[:attributes]).to have_key(:visibility_miles)
     end
   end
 
