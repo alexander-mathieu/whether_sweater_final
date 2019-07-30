@@ -1,58 +1,60 @@
 # frozen_string_literal: true
 
 class LocationForecast
-  attr_reader :location_address
+  attr_reader :id, :address
 
   def initialize(location_address, forecast)
-    @location_address = location_address
+    @id = nil
+    @address = location_address
     @currently = forecast[:currently]
     @hourly = forecast[:hourly][:data][0..7]
     @daily = forecast[:daily][:data][1..5]
   end
 
-  def current_apparent_temp
-    currently[:apparentTemperature]
-  end
-
-  def current_date
+  def date
     Time.at(currently[:time]).to_datetime.strftime('%m-%d')
   end
 
-  def current_icon
-    currently[:icon]
-  end
-
-  def current_percent_humidity
-    (currently[:humidity] * 100).to_i
-  end
-
-  def current_summary
-    currently[:summary]
-  end
-
-  def current_temp
-    currently[:temperature]
-  end
-
-  def current_time
+  def time
     Time.at(currently[:time]).to_datetime.strftime('%I:%M%p')
   end
 
-  def current_uv_index
+  def summary
+    currently[:summary]
+  end
+
+  def icon
+    currently[:icon]
+  end
+
+  def temp
+    currently[:temperature].round
+  end
+
+  def feels_like
+    currently[:apparentTemperature].round
+  end
+
+  def forecast_high
+    daily.first[:temperatureHigh].round
+  end
+
+  def forecast_low
+    daily.first[:temperatureLow].round
+  end
+
+  def percent_humidity
+    (currently[:humidity] * 100).to_i
+  end
+
+  def visibility_miles
+    currently[:visibility].round(2)
+  end
+
+  def uv_index
     currently[:uvIndex]
   end
 
-  def current_visibility
-    currently[:visibility]
-  end
-
-  def daily_high
-    daily.first[:temperatureHigh]
-  end
-
-  def daily_low
-    daily.first[:temperatureLow]
-  end
 
   def hourly_forecast
     hourly.map do |forecast|
