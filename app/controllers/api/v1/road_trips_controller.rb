@@ -5,7 +5,7 @@ class Api::V1::RoadTripsController < ApplicationController
     user = User.find_by(api_key: params[:api_key])
 
     if user
-      facade = ForecastFacade.new(road_trip_params)
+      facade = RoadTripFacade.new(road_trip_params)
       render json: RoadTripForecastSerializer.serialize(facade.road_trip_forecast)
     else
       render json: { error: 'Unauthorized API key' }, status: 401

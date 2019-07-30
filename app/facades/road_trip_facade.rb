@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-class ForecastFacade
-  def initialize(location_params)
-    @location_params = location_params
+class RoadTripFacade
+  def initialize(road_trip_params)
+    @road_trip_params = road_trip_params
   end
 
-  def location_forecast
-    LocationForecast.new(location_address, forecast)
+  def road_trip_forecast
+    RoadTripForecast.new(road_trip, forecast)
   end
 
   private
 
-  attr_reader :location_params
+  attr_reader :road_trip_params
 
   def forecast
     darksky_service.retrieve_forecast
@@ -25,15 +25,15 @@ class ForecastFacade
     location_latlong[:lat].to_s + ',' + location_latlong[:lng].to_s
   end
 
-  def location_address
-    google_maps_facade.location_address
-  end
-
   def location_latlong
     @location_latlong ||= google_maps_facade.location_latlong
   end
 
+  def road_trip
+    google_maps_facade.road_trip
+  end
+
   def google_maps_facade
-    @google_maps_facade ||= GoogleMapsFacade.new(location_params)
+    @google_maps_facade ||= GoogleMapsFacade.new(road_trip_params)
   end
 end
