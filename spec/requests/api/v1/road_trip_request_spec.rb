@@ -22,15 +22,15 @@ RSpec.describe 'Road Trip API endpoint' do
 
       forecast = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      expect(forecast[:origin]).to eq('Denver, CO, USA')
-      expect(forecast[:destination]).to eq('Pueblo, CO, USA')
-      expect(forecast[:weather_on_arrival]).to have_key(:summary)
-      expect(forecast[:weather_on_arrival]).to have_key(:icon)
-      expect(forecast[:weather_on_arrival]).to have_key(:temperature)
-      expect(forecast[:weather_on_arrival]).to have_key(:feels_like)
-      expect(forecast[:weather_on_arrival]).to have_key(:percent_humidity)
-      expect(forecast[:weather_on_arrival]).to have_key(:visibility_miles)
-      expect(forecast[:weather_on_arrival]).to have_key(:uv_index)
+      expect(forecast[:attributes][:origin]).to eq('Denver, CO, USA')
+      expect(forecast[:attributes][:destination]).to eq('Pueblo, CO, USA')
+      expect(forecast[:attributes]).to have_key(:summary)
+      expect(forecast[:attributes]).to have_key(:icon)
+      expect(forecast[:attributes]).to have_key(:temperature)
+      expect(forecast[:attributes]).to have_key(:feels_like)
+      expect(forecast[:attributes]).to have_key(:percent_humidity)
+      expect(forecast[:attributes]).to have_key(:visibility_miles)
+      expect(forecast[:attributes]).to have_key(:uv_index)
     end
   end
 
