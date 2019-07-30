@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ForecastSerializer
   def self.serialize(location_forecast)
     {
