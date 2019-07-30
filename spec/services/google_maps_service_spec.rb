@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe GoogleMapsService do
   describe 'instance methods' do
-    it '#retrieve_location_info' do
+    it '#retrieve_location' do
       location_params = { location: 'denver,co' }
 
-      response = subject.retrieve_location_info(location_params)
+      response = subject.retrieve_location(location_params)
 
       expect(response).to be_a(Hash)
       expect(response[:formatted_address]).to eq('Denver, CO, USA')
@@ -15,11 +15,11 @@ RSpec.describe GoogleMapsService do
       expect(response[:geometry][:location][:lng]).to eq(-104.990251)
     end
 
-    it '#retrieve_road_trip_info' do
+    it '#retrieve_road_trip' do
       road_trip_params = { origin: 'denver,co',
                            destination: 'pueblo,co' }
 
-      response = subject.retrieve_road_trip_info(road_trip_params)
+      response = subject.retrieve_road_trip(road_trip_params)
 
       expect(response).to be_a(Hash)
       expect(response).to have_key(:duration)
