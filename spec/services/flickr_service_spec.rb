@@ -7,12 +7,14 @@ RSpec.describe FlickrService do
     it '#retrieve_images' do
       flickr_service = FlickrService.new('39.7392358', '-104.990251')
 
-      response = flickr_service.retrieve_images
+      VCR.use_cassette('flickr_service_response') do
+        response = flickr_service.retrieve_images
 
-      expect(response).to be_an(Array)
-      expect(response[0]).to have_key(:id)
-      expect(response[0]).to have_key(:owner)
-      expect(response[0]).to have_key(:title)
+        expect(response).to be_an(Array)
+        expect(response[0]).to have_key(:id)
+        expect(response[0]).to have_key(:owner)
+        expect(response[0]).to have_key(:title)
+      end
     end
   end
 end
