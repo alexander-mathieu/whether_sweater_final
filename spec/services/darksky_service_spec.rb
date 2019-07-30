@@ -5,7 +5,9 @@ require 'rails_helper'
 RSpec.describe DarkskyService do
   describe 'instance methods' do
     it '#retrieve_forecast' do
-      response = subject.retrieve_forecast('39.7392358,-104.990251')
+      darksky_service = DarkskyService.new('39.7392358,-104.990251')
+      
+      response = darksky_service.retrieve_forecast
 
       expect(response).to be_a(Hash)
 

@@ -7,7 +7,9 @@ RSpec.describe GoogleMapsService do
     it '#retrieve_location' do
       location_params = { location: 'denver,co' }
 
-      response = subject.retrieve_location(location_params)
+      google_maps_service = GoogleMapsService.new(location_params)
+
+      response = google_maps_service.retrieve_location
 
       expect(response).to be_a(Hash)
       expect(response[:formatted_address]).to eq('Denver, CO, USA')
@@ -19,7 +21,9 @@ RSpec.describe GoogleMapsService do
       road_trip_params = { origin: 'denver,co',
                            destination: 'pueblo,co' }
 
-      response = subject.retrieve_road_trip(road_trip_params)
+      google_maps_service = GoogleMapsService.new(road_trip_params)
+
+      response = google_maps_service.retrieve_road_trip
 
       expect(response).to be_a(Hash)
       expect(response).to have_key(:duration)
