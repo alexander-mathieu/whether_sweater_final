@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Api::V1::RoadTripsController < ApplicationController
-  protect_from_forgery with: :null_session
-
   def create
     user = User.find_by(api_key: params[:api_key])
 
