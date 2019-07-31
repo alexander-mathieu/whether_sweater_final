@@ -16,10 +16,10 @@ class ImageHoarderWorker
   def top_20_cities
     [
       'new york, ny',      'los angeles, ca',    'chicago, il',     'houston, tx',
-     'philadelphia, pa',  'pheonix, az',        'san antonio, tx', 'san diego, ca',
-     'dallas, tx',        'san jose, ca',       'austin, tx',      'jacksonville, fl',
-     'san francisco, ca', 'indianapololis, in', 'columbus, oh',    'fort worth, tx',
-     'charlotte, nc',     'detroit, mi',        'el paso, tx',     'seattle, wa'
+      'philadelphia, pa',  'pheonix, az',        'san antonio, tx', 'san diego, ca',
+      'dallas, tx',        'san jose, ca',       'austin, tx',      'jacksonville, fl',
+      'san francisco, ca', 'indianapololis, in', 'columbus, oh',    'fort worth, tx',
+      'charlotte, nc',     'detroit, mi',        'el paso, tx',     'seattle, wa'
     ]
   end
 end
