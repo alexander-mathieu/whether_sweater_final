@@ -20,7 +20,7 @@ RSpec.describe LocationImage do
     end
 
     it '#url' do
-      expect(@location_image.url).to eq('https://www.flickr.com/photos/74216903@N00/47949098166')
+      expect(@location_image.url).to eq('https://farm66.staticflickr.com/65535/47949098166_30b8d34160.jpg')
     end
   end
 end
