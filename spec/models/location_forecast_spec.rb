@@ -19,12 +19,8 @@ RSpec.describe LocationForecast do
       expect(@location_forecast.address).to eq('Denver, CO, USA')
     end
 
-    it '#date' do
-      expect(@location_forecast.date).to eq('07-26')
-    end
-
-    it '#time' do
-      expect(@location_forecast.time).to eq('08:19PM')
+    it '#unix_time' do
+      expect(@location_forecast.unix_time).to eq(1564193978)
     end
 
     it '#summary' do
@@ -36,23 +32,23 @@ RSpec.describe LocationForecast do
     end
 
     it '#temp' do
-      expect(@location_forecast.temp).to eq(82)
+      expect(@location_forecast.temp).to eq(81.94)
     end
 
     it '#feels_like' do
-      expect(@location_forecast.feels_like).to eq(82)
+      expect(@location_forecast.feels_like).to eq(81.94)
     end
 
     it '#forecast_high' do
-      expect(@location_forecast.forecast_high).to eq(86)
+      expect(@location_forecast.forecast_high).to eq(86.19)
     end
 
     it '#forecast_low' do
-      expect(@location_forecast.forecast_low).to eq(68)
+      expect(@location_forecast.forecast_low).to eq(67.83)
     end
 
-    it '#percent_humidity' do
-      expect(@location_forecast.percent_humidity).to eq(32)
+    it '#humidity' do
+      expect(@location_forecast.humidity).to eq(0.32)
     end
 
     it '#uv_index' do
@@ -60,17 +56,7 @@ RSpec.describe LocationForecast do
     end
 
     it '#visibility' do
-      expect(@location_forecast.visibility_miles).to eq(2.44)
-    end
-
-    it '#hourly_forecast' do
-      expect(@location_forecast.hourly_forecast).to be_an(Array)
-      expect(@location_forecast.hourly_forecast.count).to eq(8)
-    end
-
-    it '#daily_forecast' do
-      expect(@location_forecast.daily_forecast).to be_an(Array)
-      expect(@location_forecast.daily_forecast.count).to eq(5)
+      expect(@location_forecast.visibility).to eq(2.436)
     end
   end
 end
