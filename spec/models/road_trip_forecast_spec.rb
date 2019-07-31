@@ -39,23 +39,23 @@ RSpec.describe RoadTripForecast do
     end
 
     it '#temp' do
-      expect(@road_trip_forecast.temp).to eq(85)
+      expect(@road_trip_forecast.temp).to eq(85.09)
     end
 
     it '#feels_like' do
-      expect(@road_trip_forecast.feels_like).to eq(85)
+      expect(@road_trip_forecast.feels_like).to eq(85.09)
     end
 
-    it '#percent_humidity' do
-      expect(@road_trip_forecast.percent_humidity).to eq(33)
+    it '#humidity' do
+      expect(@road_trip_forecast.humidity).to eq(0.33)
     end
 
     it '#uv_index' do
       expect(@road_trip_forecast.uv_index).to eq(0)
     end
 
-    it '#visibility_miles' do
-      expect(@road_trip_forecast.visibility_miles).to eq(9.14)
+    it '#visibility' do
+      expect(@road_trip_forecast.visibility).to eq(9.138)
     end
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe 'Forecast API endpoint' do
       expect(response).to be_successful
 
       forecast = JSON.parse(response.body, symbolize_names: true)[:data]
-      
+
       expect(forecast[:attributes]).to have_key(:address)
       expect(forecast[:attributes]).to have_key(:date)
       expect(forecast[:attributes]).to have_key(:time)
