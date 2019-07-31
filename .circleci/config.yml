@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.0.2
+          PGHOST: localhost
+          PGUSER: whether_sweater_final
+          RAILS_ENV: test
+      - image: postgres:11.3
+        environment:
+          POSTGRES_USER: whether_sweater_final
+          POSTGRES_DB: whether_sweater_final_test
+          POSTGRES_PASSWORD: ''
+
+    working_directory: ~/whether_sweater_final
+
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: whether_sweater_final-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run:
+          command: |
+            gem update --system
+            gem install bundler:2.0.2
+            bundle install
+
+      # Cache dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: whether_sweater_final-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the database
+      - run: bundle exec rake db:{drop,create,migrate}
+
+      # Run the tests
+      - run: bundle exec rake
