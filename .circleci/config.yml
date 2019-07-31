@@ -28,7 +28,6 @@ jobs:
       # Bundle install dependencies
       - run:
           command: |
-            gem update --system
             gem install bundler:2.0.2
             bundle install
 
