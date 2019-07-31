@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.1-node-browsers
         environment:
+           TZ: "America/Denver"
+        environment:
           BUNDLER_VERSION: 2.0.2
           PGHOST: localhost
           PGUSER: whether_sweater_final
@@ -38,7 +40,7 @@ jobs:
         paths:
           - vendor/bundle
 
-      # Wait for DB
+      # Wait for the database
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       # Setup the database
