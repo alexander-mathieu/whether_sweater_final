@@ -21,23 +21,23 @@ class RoadTripForecast
   end
 
   def temp
-    weather_on_arrival[:temperature].round
+    weather_on_arrival[:temperature]
   end
 
   def feels_like
-    weather_on_arrival[:apparentTemperature].round
+    weather_on_arrival[:apparentTemperature]
   end
 
-  def percent_humidity
-    (weather_on_arrival[:humidity] * 100).to_i
+  def humidity
+    weather_on_arrival[:humidity]
   end
 
   def uv_index
     weather_on_arrival[:uvIndex]
   end
 
-  def visibility_miles
-    weather_on_arrival[:visibility].round(2)
+  def visibility
+    weather_on_arrival[:visibility]
   end
 
   private
