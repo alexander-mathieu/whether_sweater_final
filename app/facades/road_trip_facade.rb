@@ -6,7 +6,9 @@ class RoadTripFacade
   end
 
   def road_trip_forecast
-    RoadTripForecast.new(road_trip, forecast)
+    Rails.cache.fetch("#{road_trip_params[:origin]}-#{road_trip_params[:destination]}-forecast", expires_in: 5.minutes) do
+      RoadTripForecast.new(road_trip, forecast)
+    end
   end
 
   private
