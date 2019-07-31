@@ -8,10 +8,23 @@ class RoadTripForecastSerializer
              :destination,
              :trip_duration,
              :summary,
-             :icon,
-             :temp,
-             :feels_like,
-             :percent_humidity,
-             :uv_index,
-             :visibility_miles
+             :icon
+
+  attribute :temp do |object|
+    object.temp.round
+  end
+
+  attribute :feels_like do |object|
+    object.feels_like.round
+  end
+
+  attribute :percent_humidity do |object|
+    (object.humidity * 100).to_i
+  end
+
+  attribute :visibility_miles do |object|
+    object.visibility.round(2)
+  end
+
+  attribute :uv_index
 end
